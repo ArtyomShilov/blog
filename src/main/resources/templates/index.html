@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Welcome to Spring MVC Blog</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<aside>
+    <h2>Recent Posts</h2>
+</aside>
+
+<main>
+
+    <article th:each="p : ${posts}">
+        <div class="panel-body">
+            <h2 class="title"><a th:href="${'/posts/' + p.id}" th:text="${p.title}"></a></h2>
+
+            <div class="date">
+                <i>Posted on</i>
+                <span th:text="${p.date}"></span>
+                <span th:text="${p.author.username}"></span>
+            </div>
+            <div class="content" th:utext="${p.body}">
+            </div>
+        </div>
+    </article>
+
+</main>
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

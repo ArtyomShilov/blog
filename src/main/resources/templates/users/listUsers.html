@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Posts</title>
+</head>
+
+<body>
+<header th:replace="layout :: site-header" />
+
+
+<div th:if="${not #lists.isEmpty(users)}">
+    <h2>List of users</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"><a href="/user/${user.id}">Id</a></td>
+            <td th:text="${user.username}">Username</td>
+        </tr>
+    </table>
+</div>
+
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>

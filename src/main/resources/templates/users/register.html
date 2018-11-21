@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Register</title>
+</head>
+
+<body>
+<div th:replace="layout :: menu" />
+<header th:replace="layout :: site-header" />
+
+<div>
+
+    <h2>Register</h2>
+
+    <header th:replace="layout :: site-message" />
+
+    <form method="post" th:object="${registerForm}">
+
+        <div>
+            <label for="username">Username:</label>
+            <div>
+                <input type="text" name="username" th:value="*{username}" />
+            </div>
+        </div>
+
+
+
+        <div>
+            <label for="password">Password:</label>
+            <div>
+                <input type="password" name="password" />
+            </div>
+        </div>
+        <div>
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>

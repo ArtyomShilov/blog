@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Posts</title>
+</head>
+
+<body>
+
+<div th:replace="layout :: menu" />
+<header th:replace="layout :: site-header" />
+
+<div class="container">
+
+    <h2>Your Posts</h2>
+
+    <br /><br />
+
+    <div th:if="${not #lists.isEmpty(posts)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th colspan="3">Action</th>
+            </tr>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}"><a href="/post/${post.id}">Id</a></td>
+                <td th:text="${post.date}">Date</td>
+                <td th:text="${post.title}">Title</td>
+                <td><a th:href="${'/posts/' + post.id}">View</a></td>
+                <td><a th:href="${'/posts/edit/' + post.id}">Edit</a></td>
+                <td><a th:href="${'/posts/delete/' + post.id}">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:replace="layout :: paginationbar" />
+
+</div>
+
+<footer th:replace="layout :: site-footer" />
+</body>
+
+</html>
